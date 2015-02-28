@@ -1,4 +1,5 @@
-This is a Simple FLASK API with the following endpoints:
+Simple API with the endpoints:
+----
 
 GET /justinify -- returns some interesting JSON
 GET /time -- returns current EST time in JSON
