@@ -20,7 +20,10 @@ def hello():
 	"Version": 1.0,
 	"Name": "Sean's API",
 	"URL": "https://github.com/sean-smith/api_workshop",
-	"Gist": "https://gist.github.com/sean-smith/b6230be9f6dd900d6209"
+	"Gist": "https://gist.github.com/sean-smith/b6230be9f6dd900d6209",
+	"Documentation": "http://api-workshop.readme.io/v1.0/docs",
+	"username": "swsmith@bu.edu",
+	"password": "nP?U6U7k}u"
 	}
 	return jsonify(**data)
 
@@ -44,7 +47,7 @@ def tm():
 	print(data)
 	return jsonify(**data)
 
-@app.route("/reddit", methods =["POST", "GET"])
+@app.route("/reddit", methods =["POST","GET"])
 def justinify():
 	if request.method == "GET":
 		data = reddit_request("http://www.reddit.com/r/puppies/hot.json")
@@ -76,7 +79,6 @@ def justinify():
 		return jsonify(**item)
 	if request.method == "POST":
 		uri = request.form["url"]
-		c = int(request.form["position"])
 		data = reddit_request(uri+".json")
 		data = data["data"]["children"]
 		list = []
@@ -95,7 +97,11 @@ def justinify():
 				"id": name
 				}
 				list.append(post)
-		item = list[count]
+		if request.args.get("position") != None:
+			c = int(request.args.get("position"))
+			item = list[c]
+		else:
+			item = list[round(random.random()*(len(list)-1))]
 		return jsonify(**item)
 
 @app.route("/addevent", methods=["POST"])
