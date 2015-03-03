@@ -1,9 +1,9 @@
 Simple API with the endpoints:
 ----
 
-	* ```GET /justinify -- returns some interesting JSON```
-	* ```GET /time -- returns current EST time in JSON```
-	* ```POST /add_event -- adds a calendar event of the following format```
+* ```GET /justinify -- returns some interesting JSON```
+* ```GET /time -- returns current EST time in JSON```
+* ```POST /add_event -- adds a calendar event of the following format```
 
 ```python
 data = {
